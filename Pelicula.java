@@ -14,18 +14,14 @@ public class Pelicula {
         this.duracion = duracion;
     }
 
-    /**
-     * Metodo similar al toString
-     *
-     * @return Cadena de informacion de la pelicula
-     */
+
     public String getInformacion() {
-        return ("Título: " + titulo + ", Director: " + director + ", Año de estreno: " + añoEstreno + ", Género: " + genero + ", Duración: " + duracion);
+        return ("Título: " + titulo + ", Director: " + director + ", Año de estreno: " + añoEstreno + ", Género: " + genero + ", Duración: " + duracion + " minutos");
     }
 
     public boolean esClasica() {
         int añoActual = Year.now().getValue();
-        return (añoActual - añoEstreno) > 25;
+        return (añoActual - añoEstreno) >= 25;
     }
 
     public String toString() {

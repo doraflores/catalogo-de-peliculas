@@ -16,6 +16,10 @@ public class Catalogo {
      * @return listaPeliculas
      */
     public String getPeliculas(){
+        if(peliculas.isEmpty()){
+            return "No se encuentra ninguna película registrada";
+        }
+
         String listaPeliculas = ""; //cadena vacia
         for(int i = 0; i < peliculas.size(); i++){
             listaPeliculas = listaPeliculas + peliculas.get(i).getInformacion() + "\n";
@@ -25,16 +29,21 @@ public class Catalogo {
     }
 
     public void buscarPeliculaPorTitulo(String titulo){
+        if(titulo != null){
+            titulo = titulo.trim();
+        }
+
         boolean peliculaEncontrada = false;
         for(int i = 0; i < peliculas.size(); i++){
             Pelicula pelicula = peliculas.get(i);
-            if(pelicula.getTitulo().equals(titulo)){
+            if(titulo.equalsIgnoreCase(pelicula.getTitulo())){
                 System.out.println(pelicula.getInformacion());
                 peliculaEncontrada = true;
+                break;
             }
         }
         if (!peliculaEncontrada) {
-            System.out.println("La pelicula no fue encontrada.");
+            System.out.println("La pelicula ´" + titulo + "´ no fue encontrada.");
         }
 
     }
